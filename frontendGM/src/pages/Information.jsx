@@ -1,3 +1,4 @@
+import Navbar from '../components/Navbar/Navbar'
 import '../styles/information.css'
 
 function Datos(props){
@@ -30,7 +31,7 @@ function ListItems(props){
 function Header(props){
     return (
         <header>
-            <div class="logo-container">
+            <div className="logo-container">
                 <img src={props.path} alt="Logo Guaya Motors" class="logo" />
                 <h1>GUAYA MOTORS</h1>
             </div>
@@ -49,6 +50,7 @@ function Footer(){
 function Information(){
     return (
         <>
+        <Navbar />
         <Header path="./media/Img. GuayaMotors.png"/>    
         <main className="container">
             <Datos title="Nuestra Misión" description=" Transformar la pasión por las dos ruedas en piezas únicas de diseño y
