@@ -7,11 +7,21 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+#Carpeta de dependencias
+
 **/node_modules/
+
+#Variables de entorno
 **/.vite/
 **/dist/
 dist-ssr
 *.local
+.env
+.env.local
+.env.testing
+
+#Docker data
+postegres_data/
 
 # Editor directories and files
 .vscode/*

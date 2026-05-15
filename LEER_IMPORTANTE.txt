@@ -1,0 +1,9 @@
+Muchachos para que les funcione en la carpeta de backend, creen un archivo llamado .env y agregan esto
+
+DB_NAME=guaya_motors_db
+DB_USER=admin
+DB_PASSWORD=
+DB_HOST=localhost
+DB_PORT=5432
+
+y ahi ponen los datos que ustedes manejen localmente
