@@ -2,13 +2,19 @@ const express = require('express');
 const cors = require('cors');
 const sequelize = require('./config/db');
 const { Sequelize } = require('sequelize');
+const Productos = require('./models/Producto');
+const productoRoutes = require('./routes/productoRoutes');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-const PORT = 5000;
+
+//Registro de rutas
+app.use('/api/productos', productoRoutes);
+
+const PORT = process.env.PORT || 5000;
 //DB CONECTION
-async function testConnection() {
+async function Connection() {
     try{
         await sequelize.authenticate();
         console.log('Conexion a PostgreSQL (Docker) exitosa.');
@@ -22,4 +28,4 @@ async function testConnection() {
     }
 }
 
-testConnection();
+Connection();
