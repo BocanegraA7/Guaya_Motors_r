@@ -29,6 +29,10 @@ const Producto = sequelize.define('Producto', {
     imagenURL: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    activo:{
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
     }
 });
 module.exports = Producto;
