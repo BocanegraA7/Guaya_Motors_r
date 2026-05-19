@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: guaya_db
+    restart: always
+    env_file:
+      - .env.pgadmin
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - db_net
+
+  pgadmin:
+    image: dpage/pgadmin4:9.13
+    container_name: pgadmin
+    env_file:
+      - .env.pgadmin
+    ports:
+      - "5050:5050"                
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    networks:
+      - db_net
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+
+networks:
+  db_net:
