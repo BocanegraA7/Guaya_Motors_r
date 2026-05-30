@@ -1,12 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const desarrolladorController = require('../controllers/desarrolladorController')
+const authMiddleware = require('../middleware/desarrolladorController'); 
+const {
+    createDesarrollador,
+    getAllDesarrollador,
+    getDesarrolladorById,
+    updateDesarollador,
+    deleteDesarrollador
+} = require('../controllers/pqrController'); 
 
-//RUTAS PARA LOS DESARROLLADORES
-router.post('/', desarrolladorController.create);
-router.get('/', desarrolladorController.getAll);
-router.get('/:id', desarrolladorController.getById);
-router.put('/:id', desarrolladorController.update);
-router.delete('/:id', desarrolladorController.delete);
+// Rutas para PQRs
+router.post('/', authMiddleware, createDesarrollador);
+router.get('/', authMiddleware, getAllDesarrollador);
+router.get('/:id', authMiddleware, getDesarrolladorById);
+router.put('/:id', authMiddleware, updateDesarollador);
+router.delete('/:id', authMiddleware, deleteDesarrollador);
 
 module.exports = router;

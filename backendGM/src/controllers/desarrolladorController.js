@@ -2,59 +2,59 @@ const Desarrollador = require('../../models/Desarrollador');
 
 const desarrolladorController = {
     // CREAR un desarrollador
-    create: async (req, res) => {
+    createDesarrollador: async (req, res) => {
         try {
             const nuevoDev = await Desarrollador.create(req.body);
-            return res.status(201).json({ success: true, data: nuevoDev });
+            return res.status(201).json({ successDesarrollador: true, dataDesarrollador: nuevoDev });
         } catch (error) {
-            return res.status(400).json({ success: false, message: error.message });
+            return res.status(400).json({ successDesarrollador: false, messageDesarrollador: error.message });
         }
     },
 
     // LEER todos los desarrolladores
-    getAll: async (req, res) => {
+    getAllDesarrollador: async (req, res) => {
         try {
             const devs = await Desarrollador.findAll();
-            return res.status(200).json({ success: true, data: devs });
+            return res.status(200).json({ successDesarrollador: true, dataDesarrollador: devs });
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return res.status(500).json({ successDesarrollador: false, messageDesarrollador: error.message });
         }
     },
 
     // LEER uno por uno los ID desarrolladores
-    getById: async (req, res) => {
+    getDesarrolladorById: async (req, res) => {
         try {
             const dev = await Desarrollador.findByPk(req.params.id);
-            if (!dev) return res.status(404).json({ success: false, message: 'Desarrollador no encontrado' });
-            return res.status(200).json({ success: true, data: dev });
+            if (!dev) return res.status(404).json({ successDesarrollador: false, messageDesarrollador: 'Desarrollador no encontrado' });
+            return res.status(200).json({ successDesarrollador: true, dataDesarrollador: dev });
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return res.status(500).json({ successDesarrollador: false, messageDesarrollador: error.message });
         }
     },
 
     // ACTUALIZAR datos del desarrollador
-    update: async (req, res) => {
+    updateDesarrollador: async (req, res) => {
         try {
             const dev = await Desarrollador.findByPk(req.params.id);
-            if (!dev) return res.status(404).json({ success: false, message: 'Desarrollador no encontrado' });
+            if (!dev) return res.status(404).json({ successDesarrollador: false, messageDesarrollador: 'Desarrollador no encontrado' });
             
             await dev.update(req.body);
-            return res.status(200).json({ success: true, data: dev });
+            return res.status(200).json({ successDesarrollador: true, dataDesarrollador: dev });
         } catch (error) {
-            return res.status(400).json({ success: false, message: error.message });
+            return res.status(400).json({ successDesarrollador: false, messageDesarrollador: error.message });
         }
     },
 
     // ELIMINAR borrar al desarrollador
-    delete: async (req, res) => {
+    deleteDesarrollador: async (req, res) => {
         try {
             const dev = await Desarrollador.findByPk(req.params.id);
-            if (!dev) return res.status(404).json({ success: false, message: 'Desarrollador no encontrado' });
+            if (!dev) return res.status(404).json({ successDesarrollador: false, messageDesarrollador: 'Desarrollador no encontrado' });
             
             await dev.destroy();
-            return res.status(200).json({ success: true, message: 'Desarrollador eliminado de la base de datos' });
+            return res.status(200).json({ successDesarrollador: true, messageDesarrollador: 'Desarrollador eliminado de la base de datos' });
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return res.status(500).json({ successDesarrollador: false, messageDesarrollador: error.message });
         }
     }
 };

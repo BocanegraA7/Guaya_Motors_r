@@ -1,5 +1,8 @@
 const express = require('express');
 const cors = require('cors');
+require('./models');
+
+sequelize.sync();
 const sequelize = require('./config/db');
 const { Sequelize } = require('sequelize');
 //PRODUCTOS
@@ -8,9 +11,16 @@ const productoRoutes = require('./src/routes/productoRoutes');
 //DESARROLLADORES
 const Desarrollador = require('./models/Desarrollador')
 const desarrolladorRoutes = require('./src/routes/desarrolladorRoutes')
-//DESARROLLADORES
+//Usuarios
 const Usuario = require('./models/Usuario');
 const usuarioRoutes = require('./src/routes/usuarioRoutes');
+
+// PQRs
+const Pqr = require('./models/Pqr');
+const pqrRoutes = require('./src/routes/pqrRoutes');
+
+
+const authRoutes = require('./src/routes/authRoutes');
 
 
 const app = express();
@@ -21,6 +31,8 @@ app.use(express.json());
 app.use('/api/productos', productoRoutes);
 app.use('/api/desarrolladores', desarrolladorRoutes);
 app.use('/api/usuarios', usuarioRoutes);
+app.use('/api/pqr', pqrRoutes)
+app.use('/auth', authRoutes);
 
 const PORT = process.env.PORT;
 //DB CONECTION
