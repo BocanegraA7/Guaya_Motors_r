@@ -11,7 +11,7 @@ const {
 
 
 //RUTAS PARA LOS USUARIOS
-router.post('/', authMiddleware, createProduct);
+router.post('/', createUser);
 router.get('/', authMiddleware, getAllUsers);
 router.get('/:id', authMiddleware, getByIdUser);
 router.put('/:id', authMiddleware, updateUser);

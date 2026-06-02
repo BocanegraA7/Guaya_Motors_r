@@ -10,7 +10,7 @@ const {
 } = require('../controllers/pqrController'); 
 
 // Rutas para PQRs
-router.post('/', authMiddleware, createPqr);
+router.post('/', createPqr);
 router.get('/', authMiddleware, getAllPqr);
 router.get('/:id', authMiddleware, getPqrById);
 router.put('/:id', authMiddleware, updatePqr);

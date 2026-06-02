@@ -1,27 +1,21 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const sequelize = require('./config/db');
 require('./models');
 
-sequelize.sync();
-const sequelize = require('./config/db');
-const { Sequelize } = require('sequelize');
 //PRODUCTOS
-const Productos = require('./models/Producto');
 const productoRoutes = require('./src/routes/productoRoutes');
 //DESARROLLADORES
-const Desarrollador = require('./models/Desarrollador')
-const desarrolladorRoutes = require('./src/routes/desarrolladorRoutes')
+const desarrolladorRoutes = require('./src/routes/desarrolladorRoutes');
 //Usuarios
-const Usuario = require('./models/Usuario');
 const usuarioRoutes = require('./src/routes/usuarioRoutes');
-
 // PQRs
-const Pqr = require('./models/Pqr');
 const pqrRoutes = require('./src/routes/pqrRoutes');
-
-
+// Carrito
+const carritoRoutes = require('./src/routes/carritoRoutes');
+// Auth
 const authRoutes = require('./src/routes/authRoutes');
-
 
 const app = express();
 app.use(cors());
@@ -31,10 +25,11 @@ app.use(express.json());
 app.use('/api/productos', productoRoutes);
 app.use('/api/desarrolladores', desarrolladorRoutes);
 app.use('/api/usuarios', usuarioRoutes);
-app.use('/api/pqr', pqrRoutes)
+app.use('/api/pqr', pqrRoutes);
+app.use('/api/carrito', carritoRoutes);
 app.use('/auth', authRoutes);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 //DB CONECTION
 async function Connection() {
     try{

@@ -1,19 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const authMiddleware = require('../middleware/desarrolladorController'); 
+const authMiddleware = require('../middleware/authMiddleware'); 
 const {
     createDesarrollador,
     getAllDesarrollador,
     getDesarrolladorById,
-    updateDesarollador,
+    updateDesarrollador,
     deleteDesarrollador
-} = require('../controllers/pqrController'); 
+} = require('../controllers/desarrolladorController'); 
 
-// Rutas para PQRs
+// Rutas para desarrolladores
 router.post('/', authMiddleware, createDesarrollador);
-router.get('/', authMiddleware, getAllDesarrollador);
-router.get('/:id', authMiddleware, getDesarrolladorById);
-router.put('/:id', authMiddleware, updateDesarollador);
+router.get('/', getAllDesarrollador); // Permitir GET público para mostrar en el frontend
+router.get('/:id', getDesarrolladorById); // Permitir GET público
+router.put('/:id', authMiddleware, updateDesarrollador);
 router.delete('/:id', authMiddleware, deleteDesarrollador);
 
 module.exports = router;
